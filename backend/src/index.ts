@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import * as dotevnv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
@@ -17,6 +17,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("The api is working perfectly with typescript enabled");
+});
 
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
