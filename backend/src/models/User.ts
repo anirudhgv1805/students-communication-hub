@@ -1,3 +1,4 @@
+import { IsEmail } from "class-validator";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -10,6 +11,9 @@ export class User {
 
   @Column({ nullable: false })
   username: string;
+
+  @Column({ type: "citext" })
+  email: string;
 
   @Column()
   batch: number;
@@ -33,7 +37,8 @@ export class User {
     department: string,
     section: string,
     password: string,
-    role: string
+    role: string,
+    email: string
   ) {
     this.userid = userid;
     this.username = username;
@@ -42,5 +47,6 @@ export class User {
     this.department = department;
     this.role = role;
     this.section = section;
+    this.email = email;
   }
 }
