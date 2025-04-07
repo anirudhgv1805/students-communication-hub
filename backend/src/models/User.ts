@@ -1,7 +1,7 @@
 import { IsEmail } from "class-validator";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity({ name: "users" })
 export class User {
   @PrimaryGeneratedColumn()
   id!: number;
@@ -22,6 +22,9 @@ export class User {
   department: string;
 
   @Column()
+  gender: string;
+
+  @Column()
   password: string;
 
   @Column()
@@ -38,7 +41,8 @@ export class User {
     section: string,
     password: string,
     role: string,
-    email: string
+    email: string,
+    gender: string
   ) {
     this.userid = userid;
     this.username = username;
@@ -48,5 +52,6 @@ export class User {
     this.role = role;
     this.section = section;
     this.email = email;
+    this.gender = gender;
   }
 }
