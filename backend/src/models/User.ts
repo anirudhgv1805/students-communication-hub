@@ -12,6 +12,7 @@ export class User {
   @Column({ nullable: false })
   username: string;
 
+  @IsEmail()
   @Column({ type: "citext" })
   email: string;
 
