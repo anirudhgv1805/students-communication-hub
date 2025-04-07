@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import * as dotevnv from "dotenv";
 import cors from "cors";
 import helmet from "helmet";
+import "reflect-metadata";
 
 dotevnv.config();
 
