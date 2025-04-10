@@ -1,5 +1,5 @@
 import { IsEmail } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({ name: "users" })
 export class User {
@@ -23,16 +23,25 @@ export class User {
   department: string;
 
   @Column()
+  role : string;
+
+  @Column()
+  emailVerified : boolean = false;
+
+  @Column()
   gender: string;
 
   @Column()
   password: string;
 
   @Column()
-  role: string;
+  section: string;
+
+  @CreateDateColumn()
+  createdAt: Date = new Date();
 
   @Column()
-  section: string;
+  about: string;
 
   constructor(
     userid: string,
@@ -43,7 +52,8 @@ export class User {
     password: string,
     role: string,
     email: string,
-    gender: string
+    gender: string,
+    about: string
   ) {
     this.userid = userid;
     this.username = username;
@@ -54,5 +64,6 @@ export class User {
     this.section = section;
     this.email = email;
     this.gender = gender;
+    this.about = about;
   }
 }
