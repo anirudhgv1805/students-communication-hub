@@ -7,7 +7,7 @@ export class User {
   id!: number;
 
   @Column()
-  userid: string;
+  userId: string;
 
   @Column({ nullable: false })
   username: string;
@@ -17,15 +17,9 @@ export class User {
   email: string;
 
   @Column()
-  batch: number;
-
-  @Column()
-  department: string;
-
-  @Column()
   role : string;
 
-  @Column()
+  @Column({default:false})
   emailVerified : boolean = false;
 
   @Column()
@@ -34,34 +28,25 @@ export class User {
   @Column()
   password: string;
 
-  @Column()
-  section: string;
-
   @CreateDateColumn()
   createdAt: Date = new Date();
 
-  @Column()
+  @Column({default:null})
   about: string;
 
   constructor(
-    userid: string,
+    userId: string,
     username: string,
-    batch: number,
-    department: string,
-    section: string,
     password: string,
     role: string,
     email: string,
     gender: string,
     about: string
   ) {
-    this.userid = userid;
+    this.userId = userId;
     this.username = username;
     this.password = password;
-    this.batch = batch;
-    this.department = department;
     this.role = role;
-    this.section = section;
     this.email = email;
     this.gender = gender;
     this.about = about;
