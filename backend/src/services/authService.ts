@@ -1,8 +1,17 @@
 import { dbsource } from "../db/data-source";
 import { User } from "../models/User";
 
-const userRepo = dbsource.getRepository(User);
+export class AuthService {
+  private userRepo = dbsource.getRepository(User);
 
-export const registerUser = async (email: string, password: string) => {
-    userRepo.create()
-};
+  registerUser = async (user:User) => {
+    const savedUser = this.userRepo.create(user);
+    this.userRepo.save(user);
+    return user;
+  };
+
+  loginUser = async (email: string, password: string) => {
+    const user = this.userRepo.findBy({ email });
+    return user;
+  };
+}

@@ -4,6 +4,8 @@ import express, { Request, Response } from "express";
 import helmet from "helmet";
 import "reflect-metadata";
 import { dbsource } from "./db/data-source";
+import { errorHandler } from "./middlewares/errorHandler";
+import { authRouter } from "./routes/authRoutes";
 
 dotenv.config();
 
@@ -33,6 +35,11 @@ app.get("/", (req: Request, res: Response) => {
   res.send("The api is working perfectly with typescript enabled");
 });
 
+app.use("/api/auth", authRouter);
+
+// to be specified at the last after the routes
+app.use(errorHandler);
+
 app.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
+  console.log(`The server is running on the port ${PORT}`);
 });
