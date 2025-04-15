@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 import express, { Request, Response } from "express";
 import helmet from "helmet";
 import "reflect-metadata";
-import { dbsource } from "./db/data-source";
+import { dbsource } from "./config/data-source";
 import { errorHandler } from "./middlewares/errorHandler";
 import { authRouter } from "./routes/authRoutes";
 

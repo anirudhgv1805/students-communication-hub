@@ -19,5 +19,9 @@ export const validateRegistration: RequestHandler[] = [
   body("password")
     .isLength({ min: 8 })
     .withMessage("Password must be at least 8 characters long"),
+  body("username").notEmpty().withMessage("Give a valid mail address"),
+  body("gender").notEmpty().withMessage("Give a valid gender"),
+  body("role").notEmpty().withMessage("Give a valid role"),
+  body("userId").notEmpty().withMessage("Give a valid UserID"),
   handleValidationResult,
 ];
